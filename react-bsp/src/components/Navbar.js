@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
-  const Dropdown = ({ linkTo, text, dropdownClass, playlistsDrop, topsongsDrop,  }) => {
+  const Dropdown = ({ linkTo, text, dropdownClass, playlistsDrop, topsongsDrop }) => {
     const [isHover, setHover] = useState(false);
 
     const handleYesHover = () => {
@@ -15,12 +15,12 @@ const Navbar = () => {
     };
 
     return (
-        <div
-          className="trigger"
-          onMouseEnter={handleYesHover}
-          onMouseLeave={handleNoHover}
-        >
-        <Link to={linkTo} className={text.toLowerCase()}>
+      <div
+        className="trigger"
+        onMouseEnter={handleYesHover}
+        onMouseLeave={handleNoHover}
+      >
+        <Link to={linkTo} className={`nav-item ${text.toLowerCase()}`}>
           {text}
         </Link>
         {isHover && (
@@ -30,27 +30,27 @@ const Navbar = () => {
             onMouseLeave={handleNoHover}
           >
             {playlistsDrop && (
-            <>
-              <Link to={`${linkTo}-top`} className={`${text.toLowerCase()}-top`}>
-                Top
-              </Link>
-              <Link to={`${linkTo}-recent`} className={`${text.toLowerCase()}-recent`}>
-                Recent
-              </Link>
-            </>
+              <>
+                <Link to={`${linkTo}-top`} className={`nav-item ${text.toLowerCase()}-top`}>
+                  Top
+                </Link>
+                <Link to={`${linkTo}-recent`} className={`nav-item ${text.toLowerCase()}-recent`}>
+                  Recent
+                </Link>
+              </>
             )}
             {topsongsDrop && (
-            <>
-              <Link to={`${linkTo}-weekly`} className={`${text.toLowerCase()}-weekly`}>
-                Weekly
-              </Link>
-              <Link to={`${linkTo}-monthly`} className={`${text.toLowerCase()}-monthly`}>
-                Monthly
-              </Link>
-              <Link to={`${linkTo}-all-time`} className={`${text.toLowerCase()}-all-time`}>
-                All Time
-              </Link>
-            </>
+              <>
+                <Link to={`${linkTo}-weekly`} className={`nav-item ${text.toLowerCase()}-weekly`}>
+                  Weekly
+                </Link>
+                <Link to={`${linkTo}-monthly`} className={`nav-item ${text.toLowerCase()}-monthly`}>
+                  Monthly
+                </Link>
+                <Link to={`${linkTo}-all-time`} className={`nav-item ${text.toLowerCase()}-all-time`}>
+                  All Time
+                </Link>
+              </>
             )}
           </div>
         )}
